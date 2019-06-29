@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Search GitHub for Issues</title>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="GitHub,search,find issues,open source">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/site.css">
+        <script src="js/index.js"></script>
+    </head>
+    <body>
+        <header>
+            <img src="img/octocat-magnify.png" alt="An icon depicting GitHubs Octocat inside a magnifying glass" class="icon" /> 
+            <h1>Search GitHub Issues</h1>
+        </header>
+        <div class="grid-container">
+            <div class="grid-item-1">
+                <!-- This form is used to enter parameters for our search-->
+                <form>
+                    <fieldset>
+                        <legend>Filter By</legend>
+                        <label for="type">Type</label>
+                        <select id="type" name="type">
+                            <option value="issue">Issue</option>
+                            <option value="pr">Pull Request</option>
+                            <option value="both">Both</option>
+                        </select>
+                        <label for="state">Status</label>
+                        <select id="state" name="state">
+                            <option value="open">Open</option>
+                            <option value="closed">Closed</option>
+                            <option value="both">Both</option>
+                        </select>
+                        <label for="pubpriv">Public / Private</label>
+                        <select id="pubpriv" name="pubpriv">
+                            <option value="public">Public</option>
+                            <option value="private">Private</option>
+                            <option value="both">Both</option>
+                        </select>
+                        <label for="language">Language</label>
+                        <input type="text" id="language" name="language">
+                        <label for="label">Label</label>
+                        <input type="text" id="label" name="label">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="title">
+                        <label for="body">Body</label>
+                        <input type="text" id="body" name="body">
+                        <label for="comments">Comments</label>
+                        <input type="text" id="comments" name="comments">
+                        <label for="sort">Sort By</label>
+                        <select id="sort" name="sort">
+                            <option value="best-match">Best Match</option>
+                            <option value="comments">Comments</option>
+                            <option value="reactions">Reactions</option>
+                            <option value="reactions-+1">Reactions +1</option>
+                            <option value="reactions--1">Reactions -1</option>
+                            <option value="reactions-smile">Reactions - Smiles</option>
+                            <option value="reactions-thinking_face">Reactions - Thinking Face</option>
+                            <option value="reactions-heart">Reactions - Heart</option>
+                            <option value="reactions-tada">Reactions  Tada</option>
+                            <option value="interactions">Interactions</option>
+                            <option value="created">Date Created</option>
+                            <option value="updated">Date Updated</option>
+                        </select>
+                        <label for="order">Order</label>
+                        <select id="order" name="order">
+                            <option value="desc">Descending</option>
+                            <option value="asc">Ascending</option>
+                        </select>
+                        <input type="button" id="search" value="Search">
+                    </fieldset>
+                </form>
+            </div>
+            <div class="grid-item-2">
+                <!-- Table to be used to store the results returned from
+                a search-->
+                <!--<table class="search-results">
+                    <thead>
+                        <tr>
+                            <th>Repository</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Labels</th>
+                            <th>Date Created</th>
+                            <th>State</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <!-- tbody is where jquery will append the data to -->
+                    <!--<tbody></tbody>
+                </table>-->
+                <h2>Search Results</h2>
+                <div class="result-content" id="result-content"></div>
+                <br />
+                <div class="page-navigation" id="page-navigation">
+                    <section id="page-info" style="display: inline">Page 0 of 0 &emsp; Go to page:</section> <input id="page" type="number" min="0" max="20">
+                    <input type="button" id="go-to-page" value="Go">
+                    &emsp;
+                    <input type="button" id="prev-page" value="Prev">
+                    <input type="button" id="next-page" value="Next">
+                    <footer><em>* The GitHub API returns the first 1000 matching items only! *</em></footer>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
